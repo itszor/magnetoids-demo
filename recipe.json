@@ -1,0 +1,51 @@
+{
+ "name": "magnetoids-demo",
+ "title": "Magnetoids demo (Frank Föhl / Oregan Developments, 1994; public domain)",
+ "platform": "acorn-archimedes",
+ "doc": "A recipe: how to turn a user's own copy of the game into a native executable. It holds no game data: the inputs are recognised by content (see $SS/tools/weave.py).",
+ "inputs": {
+  "containers": {
+   "Magnetoids - Demo (Oregan).zip": "1417b569debc431c400d8266dfe3420afd954f65cb5841501201b63cf8271f48"
+  },
+  "formats": [
+   "zip",
+   "directory"
+  ]
+ },
+ "discs": [
+  {
+   "name": "app",
+   "title": "!MGNTOIDS: a RISC OS zip of the demo application",
+   "known_images": [],
+   "key_files": {
+    "!MGNTOIDS/!HELP": "fe40fa5f2360803b4d3a1ed9010f5182ba08f97884b8d1218dedb08af50216c1",
+    "!MGNTOIDS/!RUN": "0d36de8796e67b626004b882f7c56123171abe68e4e8b89f03ee390d2a8b6f53",
+    "!MGNTOIDS/!SPRITES": "e132a1f75577aee6ba898c2c9d9518a211f0a24fba4b66e2b599f1722995f3eb",
+    "!MGNTOIDS/LOADCODE": "6e30539f342e8877c4f30aea360f21b44ab6532d0c79270857168c3a2bf1c75d",
+    "!MGNTOIDS/LOGODUMP": "b430528410239719151fbf6492e0f2243bf9ecb3f3adaf883dab96fdc0669524",
+    "!MGNTOIDS/MEMALLOC": "e799448b746e544bfa6c4ca720e4e88d61a897c99da0d18a411ba795647a9c8a",
+    "!MGNTOIDS/PROGGY": "88dcc68d4f2241b9ba40125d6a38c1160976c687c906db59e4669e7fc38909f3"
+   },
+   "game_dirs": [
+    "!MGNTOIDS"
+   ]
+  }
+ ],
+ "build": [
+  "python3 -I \"$WEAVE\" extract . INPUTS",
+  "make -C recomp regen",
+  "make -C recomp"
+ ],
+ "output": "recomp/magnetoids",
+ "requires": {
+  "superspider": "~/stuff/superspider, or $SUPERSPIDER (dune build): analyse, gen, tools/weave.py",
+  "libroger": "~/stuff/libroger, or make ROGER=...",
+  "host": [
+   "python3",
+   "ocaml + dune",
+   "gcc",
+   "SDL3 (pkg-config sdl3)"
+  ]
+ },
+ "run": "cd recomp && ./magnetoids"
+}

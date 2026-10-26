@@ -1,0 +1,28 @@
+# Python / editors
+__pycache__/
+*.pyc
+*.swp
+
+# Analysis outputs (analysis/run.sh, or make regen in recomp/)
+analysis/loadcode.json
+analysis/proggy.json
+
+# Recompilation: generated C, objects, binaries, run outputs
+recomp/gen/
+recomp/genload/
+recomp/*.o
+recomp/magnetoids
+recomp/magnetoids-cov
+recomp/recomp.*
+recomp/*.log
+recomp/*.out
+recomp/screenshot-*.bmp
+recomp/screenshot-*.png
+recomp/*.wav
+recomp/savedata/
+
+# The original and everything made from it: build.sh (recipe.json)
+# remakes them from the user's own copy.
+*.zip
+extracted/
+game/
